@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	listArgs := os.Args[1:]
-	host := listArgs[0]
-	if len(host) == 0 {
+	if len(os.Args[1:]) == 0 {
 		panic("No endpoint provided !")
 	}
+	listArgs := os.Args[1:]
+	host := listArgs[0]
 	listEndpointParts := strings.Split(host, "FUZZ")
 	byteDic, err := os.ReadFile("./dic.txt")
 	if err != nil {
