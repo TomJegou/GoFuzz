@@ -11,6 +11,10 @@ type Endpoints struct {
 	Activate bool
 }
 
+const (
+	port = "8080"
+)
+
 var (
 	listRoutes = []Endpoints{
 		{
@@ -30,5 +34,6 @@ func main() {
 			fmt.Fprintf(w, "Route path ok for : %s", route.Route)
 		})
 	}
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Printf("Mock server is up !\nListening on : http://localhost:%s", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
