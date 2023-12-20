@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"strings"
 )
@@ -28,7 +29,17 @@ func main() {
 		for i := 0; i < len(listEndpointParts)-1; i++ {
 			target += listEndpointParts[i] + word
 		}
-
+		req, err := http.NewRequest(http.MethodGet, target, nil)
+		if err != nil {
+			panic(err)
+		}
+		res, err := http.DefaultClient.Do(req)
+		if err != nil {
+			panic(err)
+		}
+		if res.StatusCode == 200 {
+			fmt.Printf("Endpoint found : %s\n", target)
+		}
 	}
 
 }
