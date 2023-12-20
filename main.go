@@ -7,11 +7,16 @@ import (
 )
 
 func main() {
-	if len(os.Args[1:]) == 0 {
-		panic("No endpoint provided !")
-	}
 	listArgs := os.Args[1:]
+	if len(listArgs) == 0 {
+		fmt.Println("⚠️No host provided")
+		return
+	}
 	host := listArgs[0]
+	if !strings.Contains(host, "FUZZ") {
+		fmt.Println("⚠️No keyword FUZZ found")
+		return
+	}
 	listEndpointParts := strings.Split(host, "FUZZ")
 	byteDic, err := os.ReadFile("./dic.txt")
 	if err != nil {
@@ -23,6 +28,7 @@ func main() {
 		for i := 0; i < len(listEndpointParts)-1; i++ {
 			target += listEndpointParts[i] + word
 		}
-		fmt.Println(target)
+
 	}
+
 }
