@@ -18,7 +18,7 @@ const (
 var (
 	listRoutes = []Endpoints{
 		{
-			Route:    "/",
+			Route:    "/home",
 			Activate: true,
 		},
 		{
@@ -29,13 +29,17 @@ var (
 )
 
 func main() {
-	for i, route := range listRoutes {
+	for i := range listRoutes {
+		route := listRoutes[i]
 		if route.Activate {
 			http.HandleFunc(route.Route, func(w http.ResponseWriter, r *http.Request) {
-				fmt.Fprintf(w, "Route path ok for : %s %d", route.Route, i)
+				fmt.Fprintf(w, "Route path ok for : %s", route.Route)
 			})
 		}
 	}
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.NotFound(w, r)
+	})
 	log.Printf("Mock server is up ! 🔥\nListening on : http://localhost:%s", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
