@@ -41,6 +41,7 @@ func main() {
 	}
 	// Handle the 404 error
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("Get request for : http://0.0.0.0:%s%s", port, r.URL)
 		http.NotFound(w, r)
 	})
 	log.Printf("Mock server is up ! 🔥\nListening on : http://localhost:%s", port)
