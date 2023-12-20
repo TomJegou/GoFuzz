@@ -10,12 +10,12 @@ import (
 func main() {
 	listArgs := os.Args[1:]
 	if len(listArgs) == 0 {
-		fmt.Println("🚫No host provided")
+		fmt.Println("🚫 No host provided")
 		return
 	}
 	host := listArgs[0]
 	if !strings.Contains(host, "FUZZ") {
-		fmt.Println("🚫No keyword FUZZ found")
+		fmt.Println("🚫 No keyword FUZZ found")
 		return
 	}
 	listEndpointParts := strings.Split(host, "FUZZ")
