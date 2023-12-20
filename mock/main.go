@@ -6,6 +6,7 @@ import (
 	"net/http"
 )
 
+// Endpoint structure
 type Endpoints struct {
 	Route    string
 	Activate bool
@@ -16,6 +17,7 @@ const (
 )
 
 var (
+	// List of routes to activate or deactivate
 	listRoutes = []Endpoints{
 		{
 			Route:    "/home",
@@ -37,6 +39,7 @@ func main() {
 			})
 		}
 	}
+	// Handle the 404 error
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 	})
