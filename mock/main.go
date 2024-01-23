@@ -31,6 +31,8 @@ var (
 )
 
 func main() {
+	fs := http.FileServer(http.Dir("./assets"))
+	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	for i := range listRoutes {
 		route := listRoutes[i]
 		if route.Activate {
