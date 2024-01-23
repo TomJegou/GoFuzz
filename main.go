@@ -24,7 +24,7 @@ func main() {
 	listEndpointParts := strings.Split(host, "FUZZ")
 	byteDic, err := os.ReadFile("./dic.txt")
 	if err != nil {
-		panic(fmt.Errorf("os.ReadFile('./dic.txt') Got : %s", err.Error()))
+		panic(fmt.Errorf("os.ReadFile('./dictionnary.txt') Got : %s", err.Error()))
 	}
 	// Parse the dictionnary
 	words := strings.Split(string(byteDic), "\n")
