@@ -22,7 +22,7 @@ func main() {
 	}
 	// Parse the host parameter
 	listEndpointParts := strings.Split(host, "FUZZ")
-	byteDic, err := os.ReadFile("./dic.txt")
+	byteDic, err := os.ReadFile("./dictionnary.txt")
 	if err != nil {
 		panic(fmt.Errorf("os.ReadFile('./dictionnary.txt') Got : %s", err.Error()))
 	}
